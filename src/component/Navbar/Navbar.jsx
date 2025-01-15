@@ -11,7 +11,7 @@ const Navbar = () => {
     <NavLink to="/register"> <li><a>Registration</a></li></NavLink>
     <NavLink to="/"><li><a onClick={handleLogout}>Logout</a></li></NavLink>
     </>
-    console.log(user);
+    
     return (
         <div className="navbar bg-base-100">
         <div className="navbar-start">

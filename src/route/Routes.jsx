@@ -4,6 +4,12 @@ import Home from "../page/Home";
 import Registration from "../page/Registration";
 import DashLayout from "../Layout/DashLayout";
 import Login from "../page/Login";
+import WorkSheet from "../component/Dashboard/Employee/WorkSheet";
+import PaymentHistory from "../component/Dashboard/Employee/PaymentHistory";
+import EmployeeList from "../component/Dashboard/Hr/EmployeeList";
+import Progress from './../component/Dashboard/Hr/Progress';
+import AllEmpoyeeList from "../component/Dashboard/Admin/AllEmpoyeeList";
+import Payroll from "../component/Dashboard/Admin/Payroll";
 
 export const router = createBrowserRouter([{
     
@@ -20,7 +26,35 @@ export const router = createBrowserRouter([{
 {path: '/login', element: <Login/>},
 
 {  path: '/dashboard',
-   element: <DashLayout/>
+   element: <DashLayout/>,
+   children:
+    [
+     {
+        path: 'worksheet',
+        element:<WorkSheet></WorkSheet>
+     },
+     {
+        path: 'paymenthistory',
+        element:<PaymentHistory></PaymentHistory>
+     },
+     {
+        path: 'employeelist',
+        element:<EmployeeList></EmployeeList>
+     },
+     {
+        path: 'progress',
+        element:<Progress></Progress>
+     },
+     {
+        path: 'allemployeelist',
+        element:<AllEmpoyeeList></AllEmpoyeeList>
+     },
+     {
+        path: 'payroll',
+        element:<Payroll></Payroll>
+     }
+    ]
+   
 
 }
 
