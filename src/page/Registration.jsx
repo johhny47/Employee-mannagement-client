@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import useAxiousPublic from "../hook/useAxiousPublic";
 import axios from "axios";
 import SocialBtn from "../component/Shared/SocialBtn";
+import Swal from "sweetalert2";
 
 
 
