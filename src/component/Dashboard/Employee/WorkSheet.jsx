@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { Table } from "flowbite-react";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAxiousPublic from "../../../hook/useAxiousPublic";
 import { axiosPublic } from './../../../hook/useAxiousPublic';
@@ -13,9 +13,10 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { Button } from "@headlessui/react";
 import MyModal from "../../Shared/MyModal";
-import { FaTrash } from "react-icons/fa";
+import { FaEdit, FaPen, FaTrash } from "react-icons/fa";
 
 const WorkSheet = () => {
+    let [isOpen, setIsOpen] = useState(false) 
   const { user } = useContext(AuthContext);
   const employeeEmail = user?.email;
   const axiosSecure = useAxiosSecure();
@@ -91,6 +92,7 @@ const WorkSheet = () => {
     }
   };
 
+  const close = () => setIsOpen(false);
   return (
     <div>
       <h1 className="text-center text-3xl font-bold">Work Sheet</h1>
@@ -124,30 +126,38 @@ const WorkSheet = () => {
       <div className="overflow-x-auto mt-10">
       
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Hour</th>
-              <th>Date</th>
-              <th>Delete</th>
-              <th>Update</th>
-            </tr>
-          </thead>
-          <tbody>
+      <Table>
+      <Table.Head>
+      <Table.HeadCell>Task</Table.HeadCell>
+      <Table.HeadCell>Hour</Table.HeadCell>
+      <Table.HeadCell>Date</Table.HeadCell>
+      <Table.HeadCell>Delete</Table.HeadCell> 
+      <Table.HeadCell>Update</Table.HeadCell>
+             
+            </Table.Head>
+            <Table.Body className="divide-y">
             {data?.map(item => (
-              <tr className="bg-base-200" key={item._id}>
-                <td>{item.task}</td>
-                <td>{item.hour}</td>
-                <td>{item.date.split('T')[0]}</td>
-                <td><button onClick={() => handleDelete(item)}><FaTrash className="text-red-500"></FaTrash></button></td>
-                <td><MyModal item={item} refetch={refetch}></MyModal></td>
-                
-              </tr>
-            ))}
-          </tbody>
+              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={item._id}>
           
-        </table>
+                <Table.Cell>{item.task}</Table.Cell>
+                <Table.Cell>{item.hour}</Table.Cell>
+                <Table.Cell>{item.date.split('T')[0]}</Table.Cell>
+                <Table.Cell><button onClick={() => handleDelete(item)}><FaTrash className="text-red-500"></FaTrash></button></Table.Cell>
+                <Table.Cell>
+              
+                <FaEdit className="pt-2 items-center" size={20}></FaEdit> 
+              <MyModal  onClick={() => setIsOpen(true)}  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></MyModal> 
+                
+
+            
+                </Table.Cell>
+                
+                </Table.Row>
+            ))}
+          </Table.Body>
+          
+          </Table>
+        
       </div>
     </div>
   );
@@ -156,3 +166,15 @@ const WorkSheet = () => {
 export default WorkSheet;
 
 
+
+        
+        
+        
+       
+       
+        
+         
+            
+       
+      
+     
