@@ -3,6 +3,7 @@ import useAxiousPublic from "../../hook/useAxiousPublic";
 import AuthContext from "../../provider/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 
 const SocialBtn = () => {
@@ -27,7 +28,11 @@ const SocialBtn = () => {
             name:user?.displayName,
             email:user?.email,
             role:'Employee',
-            img_url:user?.photoURL
+            img_url:user?.photoURL,
+            salary:"",
+            bankAccountNo:"",
+            designation:"",
+            Verified:"",
             };
     
          

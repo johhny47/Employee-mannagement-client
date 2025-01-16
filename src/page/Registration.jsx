@@ -31,7 +31,7 @@ const Registration = () => {
         const salary = form.salary.value
         const bankAccountNo = form.bankaccountno.value
         const designation = form.designation.value
-        
+        const Verified = ''
         const image = form.image.files[0]
      
          
@@ -44,7 +44,7 @@ const Registration = () => {
         )
         const img_url=data.data.display_url
      
-        const UserInfo = {name,email,role,img_url,salary,bankAccountNo,designation}
+        const UserInfo = {name,email,role,img_url,salary,bankAccountNo,designation,Verified}
        
     
         try {
@@ -94,6 +94,7 @@ const Registration = () => {
                             setError("")
                             event.target.reset()
                           }
+                          toast(`${error}`)
         }
 
        
@@ -175,7 +176,7 @@ const Registration = () => {
 </label>
 <label className="input input-bordered flex items-center gap-2 my-4">
 
- <input type="text"  name="Designation" className="grow" placeholder="Designation" />
+ <input type="text"  name="designation" className="grow" placeholder="Designation" />
 </label>
  </div>
 </div>

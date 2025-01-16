@@ -11,8 +11,8 @@ const DashLayout = () => {
         <SweetAlert2/>
         <SideBar />
     
-        <div className='flex-1  md:ml-40'>
-          <div className='p-10'>
+        <div className='flex-1 md:ml-10'>
+          <div className=''>
          
             <Outlet />
           </div>

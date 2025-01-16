@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import AuthContext from "../../provider/AuthContext"
 import { NavLink } from "react-router-dom"
-import { FaSignOutAlt } from "react-icons/fa"
+import { FaBaby, FaBars, FaSignOutAlt } from "react-icons/fa"
 import { Dropdown } from "flowbite-react";
 
 
@@ -38,10 +38,10 @@ const SideBar = () => {
   return (
     <>
       {/* Small Screen Navbar  */}
-     <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
+     <div className='bg-gray-100 text-gray-800 flex justify-between   md:hidden'>
        
-     <div className="fixed top-24 w-52 text-right">
-     <Dropdown label="Dropdown button" dismissOnClick={false}>
+     <div className=" w-52">
+     <Dropdown label={<FaBaby></FaBaby>} dismissOnClick={false}>
       {link}
       
     </Dropdown>
@@ -52,7 +52,7 @@ const SideBar = () => {
       {/* Sidebar */}
       <div  className="bg-red-400 font-bold text-white h-screen  lg:w-80 hidden  md:block lg:block">
         <div className="px-10">
-        <ul>
+        <ul >
           {link}
         </ul>
         </div>
