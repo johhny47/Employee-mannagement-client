@@ -8,7 +8,7 @@ import Pay from "./Pay";
 
 const EmployeeList = () => {
      let [isOpen, setIsOpen] = useState(false) 
-  const { data, refetch } = useQuery({
+  const { data:myData, refetch } = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
       const { data } = await axios('http://localhost:5000/employee_list');
@@ -21,33 +21,23 @@ const EmployeeList = () => {
       console.log(res.data);
     
       if (res.data.modifiedCount > 0) {
-        
-         Swal.fire({
-                  title: 'Task Added',
-                  text: 'Your task has been added successfully!',
-                  icon: 'success',
-                  confirmButtonText: 'OK',
-                });
-                refetch(); 
+        refetch(); 
+      
+               
       }
     })
   };
 
   const handleRemoveVerified = (item) => {
-    console.log("Rveri");
+   
 
     axios.patch(`http://localhost:5000/employee/removeVerify/${item._id}`).then(res => {
       console.log(res.data);
 
     if (res.data.modifiedCount > 0) {
-       
-         Swal.fire({
-                  title: 'Task Added',
-                  text: 'Your task has been added successfully!',
-                  icon: 'success',
-                  confirmButtonText: 'OK',
-                }); 
-                refetch();
+          refetch();
+        
+             
       }
     })
   };
@@ -69,7 +59,7 @@ const EmployeeList = () => {
           </Table.Head>
 
           <Table.Body className="divide-y">
-            {data?.map(item => (
+            {myData?.map(item => (
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={item._id}>
                 <Table.Cell>{item.name}</Table.Cell>
                 <Table.Cell>{item.email}</Table.Cell>
