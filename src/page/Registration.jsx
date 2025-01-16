@@ -149,17 +149,17 @@ const Registration = () => {
 </label>
 <label className="input input-bordered flex items-center gap-2 my-4">
  
-  <input type="file"  name="image" className="grow" placeholder="Password" />
+  <input type="file"  name="image" className="border-2 border-gray-600"  />
 
 </label>
 
 
 </div>
  <div>
- <label className="form-control w-full max-w-xs -mt-4 ">
+ <label className="form-control w-full  -mt-4 ">
   <div className="label">
    </div>
-  <select className="select select-bordered" name='role'>
+  <select className="w-60" name='role'>
     <option disabled selected>Select your role</option>
     <option>Employee</option>
     <option>Hr</option>
@@ -181,14 +181,15 @@ const Registration = () => {
 </div>
  <button
               type='submit'
-              className='bg-lime-500 w-full rounded-md mt-2 py-3 text-white'
+              className='bg-lime-500 w-full font-bold rounded-md mt-2 py-3 text-white'
             >Registration
   </button>
-           <SocialBtn></SocialBtn>
+ 
+</form>
+<SocialBtn></SocialBtn>
               <p className="md:text-right mt-2">Already have account? please <Link to="/login"><span className="text-red-700">Login</span></Link> </p>
         
 
-</form>
 <p className="text-red-500">{error}</p>
         </div>
     );

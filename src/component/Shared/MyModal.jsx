@@ -4,8 +4,9 @@ import DatePicker from 'react-datepicker'
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import AuthContext from '../../provider/AuthContext';
-import { FaEdit, FaPen } from 'react-icons/fa';
+
 import axios from 'axios';
+import { FaEdit } from 'react-icons/fa';
 
 export default function MyModal({ item,refetch,isOpen,close,setIsOpen}) {
   const { _id, task, hour, date } = item;
@@ -46,11 +47,9 @@ export default function MyModal({ item,refetch,isOpen,close,setIsOpen}) {
 
   return (
     <>
-      <Button  onClick={() => setIsOpen(true)}
-                                  className="rounded-md bg-black/20 py-2 px-4 text-sm font-medium text-white focus:outline-none data-[hover]:bg-black/30 data-[focus]:outline-1 data-[focus]:outline-white"
-                                 >  
-                                
-                                                  </Button>
+      <Button  onClick={() => setIsOpen(true)}>  
+                                 <FaEdit className="items-center" size={20}></FaEdit> 
+                                  </Button>
 
       <Dialog open={isOpen}  as="div" className="relative z-10 focus:outline-none" onClose={close}>
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -61,10 +60,10 @@ export default function MyModal({ item,refetch,isOpen,close,setIsOpen}) {
             >
               <div className='w-full'>
                
-                <form onSubmit={handleUpdateTask} className="gap-5 mt-3">
-                  <label className="form-control  max-w-xs">
+                <form onSubmit={handleUpdateTask} className="gap-5 mt-3 mx-10">
+                  <label>
                     <select
-                      className="select select-bordered"
+                      className="w-80"
                       value={updatedTask}
                       onChange={(e) => setUpdatedTask(e.target.value)} 
                     >
@@ -93,7 +92,11 @@ export default function MyModal({ item,refetch,isOpen,close,setIsOpen}) {
                   <button type="submit" className='bg-lime-500 w-80 mt-2 rounded-md py-3 text-white'>
                     UPDATE
                   </button>
+
                 </form>
+                <button onClick={() => setIsOpen(false)} type="submit" className='bg-blue-500 w-80 mt-2 rounded-md py-3 text-white mx-10'>
+                    CANCEL
+                  </button>
               </div>
             </DialogPanel>
           </div>

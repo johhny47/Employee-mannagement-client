@@ -99,9 +99,9 @@ const WorkSheet = () => {
 
       {/* Form */}
       <div>
-        <form onSubmit={handleSubmit} className="md:flex gap-5 mt-10">
+        <form onSubmit={handleSubmit} className="md:flex gap-20 mt-10">
           <label className="form-control w-full max-w-xs">
-            <select className="select select-bordered" name='task'>
+            <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  items-center gap-2 border-none grow" name='task'>
               <option disabled selected>Select your task</option>
               <option>Sales</option>
               <option>Support</option>
@@ -109,16 +109,16 @@ const WorkSheet = () => {
               <option>Paper-work</option>
             </select>
           </label>
-          <label className="input input-bordered flex items-center gap-2 border-none">
-            <input type="text" name="hour" className="grow" placeholder="Working Hour" />
+          <label>
+            <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  items-center gap-2 border-none grow" type="text" name="hour"  placeholder="Working Hour" />
           </label>
 
           <DatePicker
-            className="input input-bordered flex items-center gap-2"
+           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  items-center gap-2 border-none grow"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />
-          <button className='bg-lime-500 w-full rounded-md py-3 text-white'>ADD</button>
+          <button className='text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'>ADD</button>
         </form>
       </div>
 
@@ -144,9 +144,14 @@ const WorkSheet = () => {
                 <Table.Cell>{item.date.split('T')[0]}</Table.Cell>
                 <Table.Cell><button onClick={() => handleDelete(item)}><FaTrash className="text-red-500"></FaTrash></button></Table.Cell>
                 <Table.Cell>
-              
-                <FaEdit className="pt-2 items-center" size={20}></FaEdit> 
-              <MyModal  onClick={() => setIsOpen(true)}  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></MyModal> 
+                <button onClick={() => setIsOpen(true)} >
+                <MyModal className="hidden"  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></MyModal> 
+                </button>
+               
+               
+                
+                
+             
                 
 
             

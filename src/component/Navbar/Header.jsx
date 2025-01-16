@@ -20,7 +20,7 @@ const Header = () => {
   );
 
   return (
-    <Navbar fluid rounded className="mt-20">
+    <Navbar fluid rounded className="">
         <Navbar.Brand>
        
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>

@@ -44,13 +44,15 @@ const SocialBtn = () => {
         }
       };
     return (
-        <div className="form-control mt-6">
+       
            
                
-        <button onClick={handleGoogleLoged}  className="btn "> <FcGoogle size={28} /><p>Continue with Google</p></button>
+        <button onClick={handleGoogleLoged} className="bg-gradient-to-r from-cyan-500 to-blue-500  w-full rounded-md mt-2 py-3 text-white flex justify-center gap-2 font-bold">
+          <FcGoogle className="" size={28} />
+          <p >Continue with Google</p></button>
       
          
-       </div>
+     
     );
 };
 
