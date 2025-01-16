@@ -44,7 +44,7 @@ const EmployeeList = () => {
   const close = () => setIsOpen(false);
   return (
     <div>
-      <h1>Employee List</h1>
+      <h1 className=" text-center text-3xl font-bold">Employee List</h1>
 
       <div className="overflow-x-auto mt-10">
         <Table>

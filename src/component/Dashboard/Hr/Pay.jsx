@@ -10,36 +10,42 @@ import { FaEdit } from 'react-icons/fa';
 import AuthContext from '../../../provider/AuthContext';
 
 export default function Pay({ item,refetch,isOpen,close,setIsOpen}) {
-  const { _id, salary,Verified } = item;
+  const { _id,email,name, salary,Verified } = item;
   const { user } = useContext(AuthContext);
   const [updatedSalary, setUpdatedSalary] = useState( salary);
   
-  
-
+ 
   const handlePay = async (event) => {
     event.preventDefault(); 
     const form = event.target
     const month =form.month.value
     const year =form.year.value
+    const employee_id = _id
+    const employee_name = name
+    const employee_email = email  
+    const status= "Pending"
+    
+   
+  
 
-    const taskInfo = {salary:updatedSalary,month,year  };
+    const taskInfo = {salary:updatedSalary,month,year,employee_id,employee_name,employee_email,status,Verified};
     console.log(taskInfo)
-    // try {
-    //   const { data } = await axios.put(`http://localhost:5000/task/${_id}`, taskInfo);
+    try {
+      const { data } = await axios.post("http://localhost:5000/pay", taskInfo);
 
-    //   if (data) {
-    //     refetch();
-    //     Swal.fire({
-    //       title: 'Updated!',
-    //       text: 'Data updated successfully.',
-    //       icon: 'success',
-    //       confirmButtonText: 'OK',
-    //     });
-    //     setIsOpen(false); 
-    //   }
-    // } catch (error) {
-    //   toast.error(error.message);
-    // }
+      if (data) {
+        refetch();
+        Swal.fire({
+          title: 'Updated!',
+          text: 'Data updated successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+        setIsOpen(false); 
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
 
