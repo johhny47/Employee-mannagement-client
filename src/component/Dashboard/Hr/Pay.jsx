@@ -72,7 +72,8 @@ export default function Pay({ item,refetch,isOpen,close,setIsOpen}) {
                   <div className="flex min-h-full items-center justify-center p-4">
                     <DialogPanel
                       transition
-                      className="w-full max-w-md rounded-xl bg-gray-400 p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+                      className="w-full max-w-md rounded-xl 
+                      bg-[#3F83F8] p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
                     >
                       <div className='w-full'>
                        
@@ -107,12 +108,12 @@ export default function Pay({ item,refetch,isOpen,close,setIsOpen}) {
                           
         
                         
-                          <button type="submit" className='bg-lime-500 w-60 md:w-80 mt-2 rounded-md py-3 text-white'>
+                          <button type="submit" className='bg-[#84E1BC] font-bold w-60 md:w-80 mt-2 rounded-md py-3 text-white'>
                             PAY
                           </button>
         
                         </form>
-                        <button onClick={() => setIsOpen(false)} type="submit" className='bg-blue-500 w-60 md:w-80 mt-2 rounded-md py-3 text-white md:mx-10'>
+                        <button onClick={() => setIsOpen(false)} type="submit" className='bg-[#31C48D] font-bold w-60 md:w-80 mt-2 rounded-md py-3 text-white md:mx-10'>
                             CANCEL
                           </button>
                       </div>

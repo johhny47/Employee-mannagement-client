@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Button, Table } from "flowbite-react";
 import { useState } from "react";
-import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
+import { FaCheck, FaCross, FaTimes, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
@@ -15,11 +15,50 @@ const  AllEmpoyeeList = () => {
       return data;
     }
   });
-
+  const handleMakeHr = (item) => {
+    axios.patch(`http://localhost:5000/makehr/${item._id}`).then(res => {
+       console.log(res.data);
+     
+       if (res.data.modifiedCount > 0) {
+         refetch(); 
+       
+                
+       }
+     })
+   };
+   const handleFire = async (item) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes,Fire Employee!"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const res = await axios.patch(`http://localhost:5000/fire/${item._id}`)
+          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: 'Deleted',
+              text: 'Task deleted successfully!',
+              icon: 'success',
+              confirmButtonText: 'OK',
+            });
+          }
+        }
+      });
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <div>
-      <h1 className=" text-center text-3xl font-bold">Payroll</h1>
+      <h1 className=" text-center text-3xl font-bold">All Employee List</h1>
     
       <div className="overflow-x-auto mt-10">
         <Table>
@@ -33,13 +72,15 @@ const  AllEmpoyeeList = () => {
 
           <Table.Body className="divide-y">
             {myData?.map(item => (
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={item._id}>
+              <Table.Row className="bg-white font-bold dark:border-gray-700 dark:bg-gray-800" key={item._id}>
                 <Table.Cell>{item.name}</Table.Cell>
                 <Table.Cell>{item.designation}</Table.Cell>
-                <Table.Cell>{item.role}</Table.Cell>
-                <Table.Cell></Table.Cell>
+                <button className="ml-7 my-2" onClick={() => handleMakeHr(item)}>
+                      {item.role}
+                      </button> 
+               <Table.Cell><button onClick={() => handleFire(item)}>{item.fire?"Fired":"Fire"}</button></Table.Cell>
                 
-               
+              
          </Table.Row>
             ))}
           </Table.Body>

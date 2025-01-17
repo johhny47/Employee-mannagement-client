@@ -20,15 +20,16 @@ const SocialBtn = () => {
         try {
         
           const googleData = await handleGoogleLogin();
-          const { email, displayName,photoURL} = googleData;
-          console.log(email)
-    
+          const {user}=googleData
+          const { email, displayName,photoURL} = user;
+        
+            console.log(email);
         
           const UserInfo = {
-            name:user?.displayName,
-            email:user?.email,
+            name:displayName,
+            email:email,
             role:'Employee',
-            img_url:user?.photoURL,
+            img_url:photoURL,
             salary:"",
             bankAccountNo:"",
             designation:"",

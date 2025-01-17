@@ -50,7 +50,7 @@ const SideBar = () => {
       </div>
 
       {/* Sidebar */}
-      <div  className="bg-red-400 font-bold text-white h-screen  lg:w-80 hidden  md:block lg:block">
+      <div  className="bg-[#76A9FA] font-bold text-white h-screen  lg:w-80 hidden  md:block lg:block">
         <div className="px-10">
         <ul >
           {link}

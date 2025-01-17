@@ -39,8 +39,9 @@ const WorkSheet = () => {
     const task = form.task.value;
     const hour = form.hour.value;
     const date = startDate;
+    const employeeName = user?.name;
     const employeeEmail = user?.email;
-    const taskInfo = { task, hour, date, employeeEmail };
+    const taskInfo = { task, hour, date, employeeEmail,employeeName };
 
     try {
       const res = await axios.post('http://localhost:5000/task', taskInfo);

@@ -51,9 +51,8 @@ const Login = () => {
     }
 
     return (
-        <div className="w-fit mx-auto  mt-20 md:mt-40">
-      
-      <h1 className=" text-5xl">Login</h1>
+      <div className="md:max-w-3xl mx-auto bg-[#C3DDFD]  mt-20 md:mt-24 p-5 rounded-lg">
+      <h1 className="mx-20 md:mx-60 text-[#8DA2FB]  font-bold text-3xl md:text-5xl">Login</h1>
 <form onSubmit={handleSubmit}>
 <label className="input input-bordered flex items-center gap-2 my-4">
   <svg

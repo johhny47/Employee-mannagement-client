@@ -18,7 +18,7 @@ const Registration = () => {
  
   const {handleRegister,mannageProfile,handleGoogleLogin,user }= useContext(AuthContext)
   
-  const [error,setError] = useState()
+  const [error,setError] = useState("")
   const navigate=useNavigate()
     const handleSubmit = async event => {
         event.preventDefault();
@@ -33,7 +33,23 @@ const Registration = () => {
         const designation = form.designation.value
         const Verified = ''
         const image = form.image.files[0]
-     
+        if(password.length < 6){
+          setError("is less than 6 characters")
+          return;
+     }
+      if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
+          setError("password don't have a special character")
+          return;
+     }
+      if(!/[A-Z]/.test(password)){
+          setError("password must contain at least one Uppercase")
+           return;
+      }
+      if(error){
+        setError("")
+        event.target.reset()
+      }
+      toast(`${error}`)
          
 
         const formData = new FormData()
@@ -78,23 +94,7 @@ const Registration = () => {
                        confirmButtonText: 'ok'
                      })
 
-                     if(password.length < 6){
-                              setError("password must contain at least 6 charcter")
-                              return;
-                         }
-                          if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
-                              setError("password must contain at least one lowercase")
-                              return;
-                         }
-                          if(!/[A-Z]/.test(password)){
-                              setError("password must contain at least one Uppercase")
-                               return;
-                          }
-                          if(error){
-                            setError("")
-                            event.target.reset()
-                          }
-                          toast(`${error}`)
+                    
         }
 
        
@@ -105,10 +105,10 @@ const Registration = () => {
 
 
     return (
-        <div className="md:max-w-3xl mx-auto  mt-20 md:mt-40 p-5">
-      
+        <div className="md:max-w-3xl mx-auto bg-[#C3DDFD]  mt-20 md:mt-10 p-5 rounded-lg">
+      <h1 className="mx-20 md:mx-60 text-[#8DA2FB]  font-bold text-3xl md:text-5xl">Registration</h1>
 <form onSubmit={handleSubmit} >
-<div className="md:flex justify-around">
+<div className="md:flex justify-around mt-10 md:mt-14">
 <div>
 <label className="input input-bordered flex items-center gap-2 ">
   <svg
@@ -148,9 +148,10 @@ const Registration = () => {
   <input type="password"  name="password" className="grow" placeholder="Password" />
 
 </label>
-<label className="input input-bordered flex items-center gap-2 my-4">
+<p className="text-red-500">{error}</p>
+<label className="input input-bordered w-60  flex items-center gap-2 my-4">
  
-  <input type="file"  name="image" className="border-2 border-gray-600"  />
+  <input type="file"  name="image" className="border-2 border-gray-600  w-72 md:w-60"  />
 
 </label>
 
@@ -160,7 +161,7 @@ const Registration = () => {
  <label className="form-control w-full  -mt-4 ">
   <div className="label">
    </div>
-  <select className="w-60" name='role'>
+  <select className="w-72" name='role'>
     <option disabled selected>Select your role</option>
     <option>Employee</option>
     <option>Hr</option>
@@ -191,7 +192,7 @@ const Registration = () => {
               <p className="md:text-right mt-2">Already have account? please <Link to="/login"><span className="text-red-700">Login</span></Link> </p>
         
 
-<p className="text-red-500">{error}</p>
+
         </div>
     );
 };
