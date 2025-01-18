@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Pay from "./Pay";
+import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
      let [isOpen, setIsOpen] = useState(false) 
@@ -82,7 +83,11 @@ const EmployeeList = () => {
                 <Pay  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></Pay> 
                 </button>
 
-                <Table.Cell>{item._id}</Table.Cell>
+                <Table.Cell> <Link to={`/details/${item._id}`}>
+                <button>
+                Details
+                </button>
+                </Link></Table.Cell>
 
 
               </Table.Row>

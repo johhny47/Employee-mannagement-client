@@ -22,7 +22,7 @@ const Header = () => {
   );
 
   return (
-    <Navbar fluid rounded >
+    <Navbar fluid rounded className="bg-[#1E429F] text-white">
         <Navbar.Brand>
         <Navbar.Toggle />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>

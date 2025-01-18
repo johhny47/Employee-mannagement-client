@@ -10,6 +10,7 @@ import EmployeeList from "../component/Dashboard/Hr/EmployeeList";
 import Progress from './../component/Dashboard/Hr/Progress';
 import AllEmpoyeeList from "../component/Dashboard/Admin/AllEmpoyeeList";
 import Payroll from "../component/Dashboard/Admin/Payroll";
+import Details from "../component/Dashboard/Hr/Details";
 
 export const router = createBrowserRouter([{
     
@@ -19,7 +20,8 @@ export const router = createBrowserRouter([{
             {
              path:'/',
              element:<Home></Home>   
-            }
+            },
+
         ]
 },
 {path: '/register', element: <Registration/>},
@@ -39,8 +41,12 @@ export const router = createBrowserRouter([{
      },
      {
         path: 'employeelist',
-        element:<EmployeeList></EmployeeList>
+        element:<EmployeeList></EmployeeList>,
+        children:[
+        
+        ]
      },
+    
      {
         path: 'progress',
         element:<Progress></Progress>
@@ -52,10 +58,18 @@ export const router = createBrowserRouter([{
      {
         path: 'payroll',
         element:<Payroll></Payroll>
-     }
+     },
+    
     ]
+    
    
 
+},
+{
+   
+      path: '/details/:id',
+      element:<Details></Details>
+   
 }
 
 ])
