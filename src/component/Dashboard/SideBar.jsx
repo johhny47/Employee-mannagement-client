@@ -1,11 +1,14 @@
 import { useContext } from "react"
 import AuthContext from "../../provider/AuthContext"
 import { NavLink } from "react-router-dom"
-import { FaBaby, FaBars, FaSignOutAlt } from "react-icons/fa"
+import {  FaHistory, FaHome, FaPaypal, FaSignOutAlt } from "react-icons/fa"
+import { BsMenuButtonWideFill } from "react-icons/bs"
 import { Dropdown } from "flowbite-react";
 import useAdmin from "../../hook/useAdmin";
 import useHr from "../../hook/useHr";
 import useEmployee from "../../hook/useEmployee";
+import { FaBarsProgress, FaPeopleGroup } from "react-icons/fa6";
+import { FcDataSheet } from "react-icons/fc";
 
 
 
@@ -18,49 +21,50 @@ const SideBar = () => {
    const link = (
     <>
       <NavLink to="/">
-        <li><a>Home</a></li>
+        <li><a className="flex items-center gap-2"><FaHome></FaHome> Home</a></li>
       </NavLink>
+      {isAdmin ? (
+  <div>
+    <NavLink to="allemployeelist">
+      <li className="mt-5"><a className="flex items-center gap-2"> <FaPeopleGroup></FaPeopleGroup> ALL Employee List</a></li>
+    </NavLink>
+    <NavLink to="payroll">
+      <li className="mt-5"><a className="flex items-center gap-2"><FaPaypal></FaPaypal> Payroll</a></li>
+    </NavLink>
+  </div>
+) : null}
+
+{isHr ? (
+  <div>
+    <NavLink to="employeelist">
+      <li className="mt-5"><a className="flex items-center gap-2"><FaPeopleGroup></FaPeopleGroup> Employee List</a></li>
+    </NavLink>
+    <NavLink to="progress">
+      <li className="mt-5"><a className="flex items-center gap-2"><FaBarsProgress></FaBarsProgress> Progress</a></li>
+    </NavLink>
+  </div>
+) : null}
+
+{isEmployee ? (
+  <div>
+    <NavLink to="worksheet">
+      <li className="mt-5"><a className="flex items-center gap-2"><FcDataSheet></FcDataSheet> Work Sheet</a></li>
+    </NavLink>
+    <NavLink to="paymenthistory">
+      <li className="mt-5"><a className="flex items-center gap-2"><FaHistory></FaHistory> Payment History</a></li>
+    </NavLink>
+  </div>
+) : null}
+
   
-      {/* Employee */}
-      {isEmployee && (
-        <div>
-          <NavLink to="worksheet">
-            <li><a>Work Sheet</a></li>
-          </NavLink>
-          <NavLink to="paymenthistory">
-            <li><a>Payment History</a></li>
-          </NavLink>
-        </div>
-      )}
+     
   
-      {/* HR */}
-      {isHr && (
-        <div>
-          <NavLink to="employeelist">
-            <li><a>Employee List</a></li>
-          </NavLink>
-          <NavLink to="progress">
-            <li><a>Progress</a></li>
-          </NavLink>
-        </div>
-      )}
-  
-      {/* Admin */}
-      {isAdmin && (
-        <div>
-          <NavLink to="allemployeelist">
-            <li><a>ALL Employee List</a></li>
-          </NavLink>
-          <NavLink to="payroll">
-            <li><a>Payroll</a></li>
-          </NavLink>
-        </div>
-      )}
+   
   
       {/* Logout */}
       <div className="">
         <NavLink to="/">
-          <li>
+          <li className="mt-5">
             <a onClick={handleLogout} className="flex items-center gap-1">
               <FaSignOutAlt />
               Logout
@@ -75,10 +79,10 @@ const SideBar = () => {
   return (
     <>
       {/* Small Screen Navbar  */}
-     <div className='bg-gray-100 text-gray-800 flex justify-between   md:hidden'>
+     <div className='bg-gray-100 text-gray-800  md:hidden'>
        
-     <div className=" w-52">
-     <Dropdown label={<FaBaby></FaBaby>} dismissOnClick={false}>
+     <div className=" flex justify-between w-52">
+     <Dropdown label={<BsMenuButtonWideFill />} dismissOnClick={false}>
       {link}
       
     </Dropdown>
@@ -87,8 +91,8 @@ const SideBar = () => {
       </div>
 
       {/* Sidebar */}
-      <div  className="bg-[#1A56DB] font-bold text-white h-screen  lg:w-80 hidden  md:block lg:block">
-        <div className="px-10">
+      <div  className="bg-[#1A56DB] font-bold text-white min-h-screen   lg:w-80 hidden  md:block lg:block">
+        <div className="px-10 mt-10">
         <ul >
           {link}
         </ul>

@@ -60,7 +60,7 @@ const  AllEmpoyeeList = () => {
 
   return (
     <div>
-      <h1 className=" text-center text-3xl font-bold">All Employee List</h1>
+      <h1 className=" text-center text-3xl font-bold mt-10 text-[#1E429F]">All Employee List</h1>
     
       <div className="overflow-x-auto mt-10">
         <Table>

@@ -26,6 +26,7 @@ const useAxiosSecure = ()=>{
             console.log(error.message)
            
         }
+        return Promise.reject(error)
        } 
     )
    },[handleLogout, navigate])

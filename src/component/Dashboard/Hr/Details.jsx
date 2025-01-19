@@ -27,8 +27,8 @@ const Details = () => {
 
     // Prepare chart data and sort by date
     const chartData = data?.map(item => ({
-        x: `${item.month.slice(0, 3).toLowerCase()} '${item.year.toString().slice(-2)}`,
-        y: item.salary, 
+        Month: `${item.month.slice(0, 3).toLowerCase()} '${item.year.toString().slice(-2)}`,
+        Salary: item.salary, 
         date: convertToDate(item.month.slice(0, 3), item.year), 
     })) || [];
 
@@ -58,12 +58,12 @@ const Details = () => {
     margin={{ top: 20, right: 30, left: 20, bottom: 50 }}
 >
     <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="x" />
+    <XAxis dataKey="Month" />
     <YAxis tickFormatter={(tick) => `$${tick}`} />
     <Tooltip />
     <Legend />
-    <Bar dataKey="y" barSize={30}>
-        <LabelList dataKey="y" position="top" style={{ fill: "#000", fontSize: 12 }} />
+    <Bar dataKey="Salary" barSize={30}>
+        <LabelList dataKey="Salary" position="top" style={{ fill: "#000", fontSize: 12 }} />
         {sortedChartData.map((entry, index) => (
             <Cell
                 key={`cell-${index}`}

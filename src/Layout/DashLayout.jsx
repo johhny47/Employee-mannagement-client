@@ -6,7 +6,7 @@ import SweetAlert2 from "react-sweetalert2";
 
 const DashLayout = () => {
     return (
-        <div className='relative min-h-screen md:flex bg-white'>
+        <div className='relative min-h-full md:flex bg-white'>
         <Toaster/>
         <SweetAlert2/>
         <SideBar />

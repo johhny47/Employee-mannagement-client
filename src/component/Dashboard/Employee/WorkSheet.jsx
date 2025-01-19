@@ -97,7 +97,7 @@ const WorkSheet = () => {
   const close = () => setIsOpen(false);
   return (
     <div>
-      <h1 className=" text-center text-3xl font-bold">Work Sheet</h1>
+      <h1 className=" text-center text-3xl font-bold mt-10 text-[#1E429F]">Work Sheet</h1>
 
       {/* Form */}
       <div>

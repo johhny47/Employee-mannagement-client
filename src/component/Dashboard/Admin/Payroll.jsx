@@ -21,7 +21,7 @@ const Payroll = () => {
 
   return (
     <div>
-      <h1 className=" text-center text-3xl font-bold">Payroll</h1>
+      <h1 className=" text-center text-3xl font-bold mt-10 text-[#1E429F]">Payroll</h1>
     
       <div className="overflow-x-auto mt-10">
         <Table>
@@ -43,6 +43,10 @@ const Payroll = () => {
                 <Table.Cell>{item.month}</Table.Cell>
                 <Table.Cell>{item.year}</Table.Cell>
                 <Table.Cell>{item.salary}</Table.Cell>
+                <Table.Cell>{item?.updated_at?.split('T')[0]}</Table.Cell>
+                <Table.Cell>{
+                  item.updated_at? <button className="disable bold text-red-600" >Paid</button> :<button className="bold text-green-500">Pay</button>
+                  }</Table.Cell>
                
          </Table.Row>
             ))}

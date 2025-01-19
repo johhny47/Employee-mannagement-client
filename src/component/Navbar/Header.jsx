@@ -13,7 +13,7 @@ const Header = () => {
     {
       user? <div className="md:flex gap-4"> <NavLink to="/"><li><a >Home</a></li></NavLink>
       <NavLink to="/dashboard"><li className=""><a >DashBoard</a></li></NavLink>
-      <NavLink to="/register"><li><a > Registration</a></li></NavLink>
+      
      
       </div> :<div className="md:flex gap-4"> <NavLink to="/"><li><a >Home</a></li></NavLink>
       <NavLink to="/dashboard"><li className=""><a >DashBoard</a></li></NavLink>

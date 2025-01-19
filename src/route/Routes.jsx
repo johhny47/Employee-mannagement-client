@@ -12,6 +12,10 @@ import AllEmpoyeeList from "../component/Dashboard/Admin/AllEmpoyeeList";
 import Payroll from "../component/Dashboard/Admin/Payroll";
 import Details from "../component/Dashboard/Hr/Details";
 import PrivateRoute from './../private/PrivateRoute';
+import EmployeeRoute from "../private/EmployeeRoute";
+import HrRoute from "../private/HrRoute";
+import AdminRoute from "../private/AdminRoute";
+import DashBoardHome from "../component/Dashboard/DashBoardHome";
 
 export const router = createBrowserRouter([{
     
@@ -22,6 +26,7 @@ export const router = createBrowserRouter([{
              path:'/',
              element:<Home></Home>   
             },
+           
 
         ]
 },
@@ -29,34 +34,41 @@ export const router = createBrowserRouter([{
 {path: '/login', element: <Login/>},
 
 {  path: '/dashboard',
-   element:  <PrivateRoute><DashLayout/></PrivateRoute>,
+   element:  <DashLayout/>,
    children:
-    [
+    [ {
+      index: true,
+      element: (
+        <PrivateRoute>
+       <DashBoardHome></DashBoardHome>
+        </PrivateRoute>
+      ),
+    },
      {
         path: 'worksheet',
-        element:<PrivateRoute><WorkSheet></WorkSheet></PrivateRoute>
+        element:<PrivateRoute><EmployeeRoute><WorkSheet></WorkSheet></EmployeeRoute> </PrivateRoute>
      },
      {
         path: 'paymenthistory',
-        element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+        element: <PrivateRoute><EmployeeRoute><PaymentHistory></PaymentHistory></EmployeeRoute></PrivateRoute>
      },
      {
         path: 'employeelist',
-        element: <PrivateRoute><EmployeeList></EmployeeList></PrivateRoute>,
+        element: <PrivateRoute><HrRoute><EmployeeList></EmployeeList></HrRoute> </PrivateRoute>,
        
      },
     
      {
         path: 'progress',
-        element:<PrivateRoute><Progress></Progress></PrivateRoute>
+        element:<PrivateRoute><HrRoute><Progress></Progress></HrRoute></PrivateRoute>
      },
      {
         path: 'allemployeelist',
-        element:<PrivateRoute><AllEmpoyeeList></AllEmpoyeeList></PrivateRoute>
+        element:<PrivateRoute><AdminRoute><AllEmpoyeeList></AllEmpoyeeList></AdminRoute></PrivateRoute>
      },
      {
         path: 'payroll',
-        element:<PrivateRoute><Payroll></Payroll></PrivateRoute>
+        element:<PrivateRoute><AdminRoute><Payroll></Payroll></AdminRoute></PrivateRoute>
      },
     
     ]
