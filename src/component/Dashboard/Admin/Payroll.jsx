@@ -5,11 +5,12 @@ import { useState } from "react";
 import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import AdminPay from "./AdminPay";
 
 
 const Payroll = () => {
   const axiosSecure = useAxiosSecure();
-    
+  let [isOpen, setIsOpen] = useState(false)
   const { data:myData, refetch } = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
@@ -18,7 +19,7 @@ const Payroll = () => {
     }
   });
 
-
+  const close = () => setIsOpen(false);
   return (
     <div>
       <h1 className=" text-center text-3xl font-bold mt-10 text-[#1E429F]">Payroll</h1>
@@ -44,9 +45,9 @@ const Payroll = () => {
                 <Table.Cell>{item.year}</Table.Cell>
                 <Table.Cell>{item.salary}</Table.Cell>
                 <Table.Cell>{item?.updated_at?.split('T')[0]}</Table.Cell>
-                <Table.Cell>{
-                  item.updated_at? <button className="disable bold text-red-600" >Paid</button> :<button className="bold text-green-500">Pay</button>
-                  }</Table.Cell>
+                <Table.Cell><button onClick={() => setIsOpen(true)} >
+                                <AdminPay  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></AdminPay> 
+                                </button></Table.Cell>
                
          </Table.Row>
             ))}

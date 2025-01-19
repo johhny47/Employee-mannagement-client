@@ -62,11 +62,11 @@ const SideBar = () => {
    
   
       {/* Logout */}
-      <div className="">
+      <div className="text-[#E02424] font-bold">
         <NavLink to="/">
           <li className="mt-5">
             <a onClick={handleLogout} className="flex items-center gap-1">
-              <FaSignOutAlt />
+              <FaSignOutAlt className="rotate-180" />
               Logout
             </a>
           </li>

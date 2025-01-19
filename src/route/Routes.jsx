@@ -16,6 +16,7 @@ import EmployeeRoute from "../private/EmployeeRoute";
 import HrRoute from "../private/HrRoute";
 import AdminRoute from "../private/AdminRoute";
 import DashBoardHome from "../component/Dashboard/DashBoardHome";
+import ContactUs from "../page/ContactUs";
 
 export const router = createBrowserRouter([{
     
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([{
              path:'/',
              element:<Home></Home>   
             },
+            {
+               path:'/contact',
+               element:<ContactUs></ContactUs>  
+              },
            
 
         ]

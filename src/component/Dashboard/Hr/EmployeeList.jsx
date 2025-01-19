@@ -80,7 +80,7 @@ const EmployeeList = () => {
                 </Table.Cell>
                 <Table.Cell>{item.bankAccountNo}</Table.Cell>
                 <Table.Cell>{item.salary}</Table.Cell>
-
+                
                 <button onClick={() => setIsOpen(true)} >
                 <Pay  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></Pay> 
                 </button>
