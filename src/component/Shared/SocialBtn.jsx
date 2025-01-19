@@ -13,14 +13,14 @@ const SocialBtn = () => {
   const {handleRegister,mannageProfile,handleGoogleLogin,user }= useContext(AuthContext)
   
   const [error,setError] = useState()
-  const navigate=useNavigate()
+  const navigate = useNavigate()
     
      
      const handleGoogleLoged = async () => {
         try {
         
           const googleData = await handleGoogleLogin();
-          const {user}=googleData
+          const {user}= googleData
           const { email, displayName,photoURL} = user;
         
             console.log(email);
@@ -28,7 +28,7 @@ const SocialBtn = () => {
           const UserInfo = {
             name:displayName,
             email:email,
-            role:'Employee',
+           
             img_url:photoURL,
             salary:"",
             bankAccountNo:"",
@@ -39,7 +39,7 @@ const SocialBtn = () => {
          
           const res = await axiosPublic.post('/user', UserInfo);
     
-          if (res.data.insertedId) {
+          if (email || res.data.insertedId){
             console.log('User added to the database');
             navigate('/');
             toast.success('Signup Successful');

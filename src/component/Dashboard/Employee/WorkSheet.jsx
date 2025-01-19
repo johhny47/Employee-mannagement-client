@@ -27,7 +27,7 @@ const WorkSheet = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['task'],
     queryFn: async () => {
-      const { data } = await axiosPublic.get(`/task/search?userEmail=${employeeEmail}`);
+      const { data } = await  axiosSecure.get(`/task/search?userEmail=${employeeEmail}`);
       return data;
     }
   });
@@ -41,10 +41,11 @@ const WorkSheet = () => {
     const date = startDate;
     const employeeName = user?.name;
     const employeeEmail = user?.email;
-    const taskInfo = { task, hour, date, employeeEmail,employeeName };
+    const employeePhoto = user?.photoURL;
+    const taskInfo = { task, hour, date, employeeEmail,employeeName,employeePhoto };
 
     try {
-      const res = await axios.post('http://localhost:5000/task', taskInfo);
+      const res = await  axiosSecure.post('/task', taskInfo);
       
 
       if (res.data) {
@@ -75,7 +76,7 @@ const WorkSheet = () => {
         confirmButtonText: "Yes, delete it!"
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const res = await axiosPublic.delete(`http://localhost:5000/task/${item._id}`);
+          const res = await  axiosSecure.delete(`/task/${item._id}`);
           console.log(res.data);
           if (res.data.deletedCount > 0) {
             refetch();

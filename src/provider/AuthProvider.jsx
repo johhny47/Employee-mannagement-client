@@ -36,52 +36,40 @@ const handleRegister =(email,password)=>
     signOut(auth)
    }
 
-  // Check if user is fired
-  const checkIfUserFired = async (userEmail) => {
-    try {
-      const { data } = await axios.get('http://localhost:5000/firedUser');
-      return data.some(employee => employee.email === userEmail);
-    } catch (error) {
-      console.error('Error fetching fired users:', error);
-      return false;
-    }
+   const checkIfUserFired = async (userEmail) => {
+    const { data } = await axios.get('http://localhost:5000/firedUser');
+    return data.some(employee => employee.email === userEmail);
   };
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
-        try {
-          // Check if the user has been fired first
-          const isFired = await checkIfUserFired(currentUser.email);
-          
-          if (isFired) {
-            
-            console.log('User logged out due to being fired.');
-            await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true });
-            setUser(null); 
-          } else {
-            setUser(currentUser);
-            await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser.email }, { withCredentials: true });
-          }
-        } catch (error) {
-          console.error('Error checking user status or logging in:', error);
+        setUser(currentUser);
+          // Proceed with issuing the JWT
+          await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser.email }, { withCredentials: true }).catch(() => {});
+        const isFired = await checkIfUserFired(currentUser.email).catch(() => false); // Ignore errors here
+        
+        if (isFired) {
+          console.log('User logged out due to being fired.');
+          await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true }).catch(() => {});
           setUser(null);
+          handleLogout();
+         
+        } else {
+          setUser(currentUser);
+          // Proceed with issuing the JWT
+          await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser.email }, { withCredentials: true }).catch(() => {});
         }
       } else {
-      
-        try {
-          await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true });
-          console.log('User logged out.');
-          setUser(null);
-        } catch (error) {
-          console.error('Error logging out:', error);
-        }
+        await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true }).catch(() => {});
+        console.log('User logged out.');
+        setUser(null);
       }
     });
   
-   
     return () => unsubscribe();
   }, []);
+  
   
 
   const authInfo = {

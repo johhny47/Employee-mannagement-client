@@ -6,19 +6,21 @@ import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Pay from "./Pay";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const EmployeeList = () => {
+  const  axiosSecure = useAxiosSecure();
      let [isOpen, setIsOpen] = useState(false) 
   const { data:myData, refetch } = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
-      const { data } = await axios('http://localhost:5000/employee_list');
+      const { data } = await axiosSecure('http://localhost:5000/employee_list');
       return data;
     }
   });
 
   const handleVerified = (item) => {
-   axios.patch(`http://localhost:5000/employee/verify/${item._id}`).then(res => {
+    axiosSecure.patch(`http://localhost:5000/employee/verify/${item._id}`).then(res => {
       console.log(res.data);
     
       if (res.data.modifiedCount > 0) {
@@ -32,7 +34,7 @@ const EmployeeList = () => {
   const handleRemoveVerified = (item) => {
    
 
-    axios.patch(`http://localhost:5000/employee/removeVerify/${item._id}`).then(res => {
+    axiosSecure.patch(`/employee/removeVerify/${item._id}`).then(res => {
       console.log(res.data);
 
     if (res.data.modifiedCount > 0) {

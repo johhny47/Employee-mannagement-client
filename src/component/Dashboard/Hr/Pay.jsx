@@ -8,9 +8,11 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { FaEdit } from 'react-icons/fa';
 import AuthContext from '../../../provider/AuthContext';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 export default function Pay({ item,refetch,isOpen,close,setIsOpen}) {
-  const { _id,email,name, salary,Verified } = item;
+  const axiosSecure = useAxiosSecure();
+  const { _id,email,name, salary,Verified,img_url } = item;
   const { user } = useContext(AuthContext);
   const [updatedSalary, setUpdatedSalary] = useState( salary);
   
@@ -22,16 +24,17 @@ export default function Pay({ item,refetch,isOpen,close,setIsOpen}) {
     const year =form.year.value
     const employee_id = _id
     const employee_name = name
-    const employee_email = email  
+    const employee_email = email 
+    const employeePhoto= img_url
     const status= "Pending"
     
    
   
 
-    const taskInfo = {salary:updatedSalary,month,year,employee_id,employee_name,employee_email,status,Verified};
+    const taskInfo = {salary:updatedSalary,month,year,employee_id,employee_name,employee_email,status,Verified,employeePhoto};
     console.log(taskInfo)
     try {
-      const { data } = await axios.post("http://localhost:5000/pay", taskInfo);
+      const { data } = await axiosSecure.post("/pay", taskInfo);
 
       if (data) {
         refetch();

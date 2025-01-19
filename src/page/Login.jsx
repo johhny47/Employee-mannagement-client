@@ -24,29 +24,26 @@ const Login = () => {
        
        
         
-        handleLogin(email,password)
-        .then(res=>{
-              
-            Swal.fire({
-              title: 'Successful!',
-              text: 'Successfully logged in',
-              icon: 'success',
-              confirmButtonText: 'ok'
-            })
-            navigate("/")
-            setLoading(true)
-           
-          })
-          .catch(err=>
-           
-            Swal.fire({
-              title: 'Error!',
-              text: `${err.message}`,
-              icon: 'error',
-              confirmButtonText: 'ok'
-            })
-         
-        )
+        handleLogin(email, password)
+          .then(res => {
+                Swal.fire({
+                  title: 'Successful!',
+                  text: 'Successfully logged in',
+                  icon: 'success',
+                  confirmButtonText: 'ok'
+                   });
+                   navigate("/"); 
+                   setLoading(false); 
+                   })
+                  .catch(err => {
+                  Swal.fire({
+                   title: 'Error!',
+                   text: `${err.message}`,
+                   icon: 'error',
+                   confirmButtonText: 'ok'
+                   });
+                   setLoading(false);
+                   });
    
     }
 
@@ -90,10 +87,11 @@ const Login = () => {
               Login
             
             </button>
-           <SocialBtn></SocialBtn>
-              <p className="mt-2">Don't have account? please <Link to="/register"><span className="text-blue-700">Register</span></Link> </p>
+           
 
 </form>
+<SocialBtn></SocialBtn>  
+<p className="mt-2">Don't have account? please <Link to="/register"><span className="text-blue-700">Register</span></Link> </p>
         </div>
     );
 };

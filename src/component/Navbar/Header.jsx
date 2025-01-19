@@ -10,11 +10,19 @@ const Header = () => {
   console.log(user);
   const link = (
     <>
-   
-     <NavLink to="/"><li><a >Home</a></li></NavLink>
+    {
+      user? <div className="md:flex gap-4"> <NavLink to="/"><li><a >Home</a></li></NavLink>
+      <NavLink to="/dashboard"><li className=""><a >DashBoard</a></li></NavLink>
+      <NavLink to="/register"><li><a > Registration</a></li></NavLink>
+     
+      </div> :<div className="md:flex gap-4"> <NavLink to="/"><li><a >Home</a></li></NavLink>
       <NavLink to="/dashboard"><li className=""><a >DashBoard</a></li></NavLink>
       <NavLink to="/register"><li><a > Registration</a></li></NavLink>
       <NavLink to="/login"><li><a >Login</a></li></NavLink>
+      </div>
+    }
+    
+     
      
   
     
@@ -29,8 +37,8 @@ const Header = () => {
       </Navbar.Brand>
       
      {
-      user &&  <div className="flex md:order-2 gap-4 items-center">   <ul><NavLink to="/"><li ><a className="flex items-center gap-2" onClick={handleLogout} ><h1>Logout</h1> <FaSignOutAlt ></FaSignOutAlt></a></li>  </NavLink></ul>
-      <Avatar alt="User settings"  img={user?.photoURL} rounded /></div>
+      user ?  <div className="flex md:order-2 gap-4 items-center">   <ul><NavLink to="/"><li ><a className="flex items-center gap-2" onClick={handleLogout} ><h1>Logout</h1> <FaSignOutAlt ></FaSignOutAlt></a></li>  </NavLink></ul>
+      <Avatar alt="User settings"  img={user?.photoURL} rounded /></div> : <div></div>
      
       
      }

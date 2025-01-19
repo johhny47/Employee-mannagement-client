@@ -11,6 +11,7 @@ import Progress from './../component/Dashboard/Hr/Progress';
 import AllEmpoyeeList from "../component/Dashboard/Admin/AllEmpoyeeList";
 import Payroll from "../component/Dashboard/Admin/Payroll";
 import Details from "../component/Dashboard/Hr/Details";
+import PrivateRoute from './../private/PrivateRoute';
 
 export const router = createBrowserRouter([{
     
@@ -28,36 +29,34 @@ export const router = createBrowserRouter([{
 {path: '/login', element: <Login/>},
 
 {  path: '/dashboard',
-   element: <DashLayout/>,
+   element:  <PrivateRoute><DashLayout/></PrivateRoute>,
    children:
     [
      {
         path: 'worksheet',
-        element:<WorkSheet></WorkSheet>
+        element:<PrivateRoute><WorkSheet></WorkSheet></PrivateRoute>
      },
      {
         path: 'paymenthistory',
-        element:<PaymentHistory></PaymentHistory>
+        element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
      },
      {
         path: 'employeelist',
-        element:<EmployeeList></EmployeeList>,
-        children:[
-        
-        ]
+        element: <PrivateRoute><EmployeeList></EmployeeList></PrivateRoute>,
+       
      },
     
      {
         path: 'progress',
-        element:<Progress></Progress>
+        element:<PrivateRoute><Progress></Progress></PrivateRoute>
      },
      {
         path: 'allemployeelist',
-        element:<AllEmpoyeeList></AllEmpoyeeList>
+        element:<PrivateRoute><AllEmpoyeeList></AllEmpoyeeList></PrivateRoute>
      },
      {
         path: 'payroll',
-        element:<Payroll></Payroll>
+        element:<PrivateRoute><Payroll></Payroll></PrivateRoute>
      },
     
     ]
@@ -68,7 +67,7 @@ export const router = createBrowserRouter([{
 {
    
       path: '/details/:id',
-      element:<Details></Details>
+      element:<PrivateRoute><Details></Details></PrivateRoute>
    
 }
 

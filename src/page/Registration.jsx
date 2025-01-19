@@ -73,7 +73,7 @@ const Registration = () => {
          
           axiosPublic.post('/user',UserInfo)
           .then(res=>{
-            if(res.data.insertedId){
+            if(res.data.modifiedCount > 0 || res.data.insertedId ){
              
                Swal.fire({
                             title: 'Successful!',
@@ -81,7 +81,7 @@ const Registration = () => {
                             icon: 'success',
                             confirmButtonText: 'ok'
                           })
-                          navigate('/')
+                          navigate('/login')
             }
           })
          

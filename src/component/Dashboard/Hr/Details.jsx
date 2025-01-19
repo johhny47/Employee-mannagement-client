@@ -2,15 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Bar, BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend,LabelList,Cell } from "recharts";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 const Details = () => {
+    const  axiosSecure = useAxiosSecure();
     const params = useParams();
     console.log(params.id);
 
     const { data, refetch } = useQuery({
         queryKey: ['details'],
         queryFn: async () => {
-            const { data } = await axios(`http://localhost:5000/details/${params?.id}`);
+            const { data } = await axiosSecure(`/details/${params?.id}`);
             return data;
         }
     });
@@ -40,7 +42,7 @@ const Details = () => {
                 data && data.length > 0 ? (
                     <div>
                       
-                        <img className="h-20 w-20 rounded-full mx-auto" src={data[0]?.photo} alt="Employee" />
+                        <img className="h-20 w-20 rounded-full mx-auto" src={data[0]?.employeePhoto} alt="Employee" />
                         
                       
                         <h2 className="font-bold mt-2 text-center">{data[0]?.employee_name}</h2>

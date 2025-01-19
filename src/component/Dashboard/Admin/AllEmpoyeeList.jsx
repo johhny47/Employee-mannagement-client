@@ -4,19 +4,21 @@ import { Button, Table } from "flowbite-react";
 import { useState } from "react";
 import { FaCheck, FaCross, FaTimes, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 
 const  AllEmpoyeeList = () => {
+  const  axiosSecure = useAxiosSecure();
     
   const { data:myData, refetch } = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
-      const { data } = await axios('http://localhost:5000/allemployeelist');
+      const { data } = await axiosSecure('/allemployeelist');
       return data;
     }
   });
   const handleMakeHr = (item) => {
-    axios.patch(`http://localhost:5000/makehr/${item._id}`).then(res => {
+    axiosSecure.patch(`/makehr/${item._id}`).then(res => {
        console.log(res.data);
      
        if (res.data.modifiedCount > 0) {
@@ -38,7 +40,7 @@ const  AllEmpoyeeList = () => {
         confirmButtonText: "Yes,Fire Employee!"
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const res = await axios.patch(`http://localhost:5000/fire/${item._id}`)
+          const res = await axiosSecure.patch(`/fire/${item._id}`)
           console.log(res.data);
           if (res.data.modifiedCount > 0) {
             refetch();

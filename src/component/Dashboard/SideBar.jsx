@@ -3,37 +3,74 @@ import AuthContext from "../../provider/AuthContext"
 import { NavLink } from "react-router-dom"
 import { FaBaby, FaBars, FaSignOutAlt } from "react-icons/fa"
 import { Dropdown } from "flowbite-react";
+import useAdmin from "../../hook/useAdmin";
+import useHr from "../../hook/useHr";
+import useEmployee from "../../hook/useEmployee";
 
 
 
 const SideBar = () => {
   const {user,handleLogout} =useContext(AuthContext)
-  const link = <>
-  <NavLink to="/"> <li><a>Home</a></li></NavLink>
-
-  {/* Employee */}
-    <div>
-    <NavLink to="worksheet"> <li><a>Work Sheet</a></li></NavLink>
-    <NavLink to="paymenthistory"> <li><a>Payment History</a></li></NavLink>
-    </div>
-    {/* Hr */}
-    <div>
-    <NavLink to="employeelist"> <li><a>Employee List</a></li></NavLink>
-    <NavLink to="progress"> <li><a>Progress</a></li></NavLink>
-    </div>
-     {/* Admin */}
-     <div>
-    <NavLink to="allemployeelist"> <li><a>ALL Employee List</a></li></NavLink>
-    <NavLink to="payroll"> <li><a>Payroll</a></li></NavLink>
-    </div>
+   const [isAdmin] = useAdmin()
+   const [isHr]=useHr()
+   const [isEmployee]=useEmployee()
+   console.log(isAdmin);
+   const link = (
+    <>
+      <NavLink to="/">
+        <li><a>Home</a></li>
+      </NavLink>
   
-  <div className="">
-   
-  <NavLink to="/"><li><a onClick={handleLogout} className="flex items-center gap-1">  <FaSignOutAlt className=""></FaSignOutAlt>Logout</a></li></NavLink>
- 
-  </div>
+      {/* Employee */}
+      {isEmployee && (
+        <div>
+          <NavLink to="worksheet">
+            <li><a>Work Sheet</a></li>
+          </NavLink>
+          <NavLink to="paymenthistory">
+            <li><a>Payment History</a></li>
+          </NavLink>
+        </div>
+      )}
   
-  </>
+      {/* HR */}
+      {isHr && (
+        <div>
+          <NavLink to="employeelist">
+            <li><a>Employee List</a></li>
+          </NavLink>
+          <NavLink to="progress">
+            <li><a>Progress</a></li>
+          </NavLink>
+        </div>
+      )}
+  
+      {/* Admin */}
+      {isAdmin && (
+        <div>
+          <NavLink to="allemployeelist">
+            <li><a>ALL Employee List</a></li>
+          </NavLink>
+          <NavLink to="payroll">
+            <li><a>Payroll</a></li>
+          </NavLink>
+        </div>
+      )}
+  
+      {/* Logout */}
+      <div className="">
+        <NavLink to="/">
+          <li>
+            <a onClick={handleLogout} className="flex items-center gap-1">
+              <FaSignOutAlt />
+              Logout
+            </a>
+          </li>
+        </NavLink>
+      </div>
+    </>
+  );
+  
 
   return (
     <>

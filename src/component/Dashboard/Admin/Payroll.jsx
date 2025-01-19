@@ -4,14 +4,16 @@ import { Button, Table } from "flowbite-react";
 import { useState } from "react";
 import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 
 const Payroll = () => {
+  const axiosSecure = useAxiosSecure();
     
   const { data:myData, refetch } = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
-      const { data } = await axios('http://localhost:5000/payroll');
+      const { data } = await axiosSecure.get('/payroll');
       return data;
     }
   });
