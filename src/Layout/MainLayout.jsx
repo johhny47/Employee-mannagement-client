@@ -3,15 +3,22 @@ import Navbar from "../component/Navbar/Header";
 import { Toaster } from "react-hot-toast";
 import SweetAlert2 from "react-sweetalert2";
 import Header from "../component/Navbar/Header";
+import Footer from "../component/Footer/Footer";
 
 
 const MainLayout = () => {
     return (
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
             <Toaster/>
             <SweetAlert2/>
             <Header></Header>
+            <div className="min-h-[calc(100vh-273px)] w-full mx-auto">
             <Outlet></Outlet>
+            </div>
+           
+            <div>
+                <Footer></Footer>
+            </div>
         </div>
     );
 };
