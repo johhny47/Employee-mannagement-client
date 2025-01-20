@@ -44,7 +44,7 @@ const Payroll = () => {
                 <Table.Cell>{item.month}</Table.Cell>
                 <Table.Cell>{item.year}</Table.Cell>
                 <Table.Cell>{item.salary}</Table.Cell>
-                <Table.Cell>{item?.updated_at?.split('T')[0]}</Table.Cell>
+                <Table.Cell>{item?.updated_time?.split('T')[0]}</Table.Cell>
                 <Table.Cell><button onClick={() => setIsOpen(true)} >
                                 <AdminPay  close={close} isOpen={isOpen} item={item}  refetch={refetch} setIsOpen={setIsOpen} ></AdminPay> 
                                 </button></Table.Cell>
