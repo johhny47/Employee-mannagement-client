@@ -77,13 +77,14 @@ const CheckoutForm = ({setIsOpen,item, refetch, }) => {
     })
  
     if (paymentIntent.status === 'succeeded') {
-        console.log("intent");
+        console.log(paymentIntent?.id);
       try {
       
       const {data} = await axiosSecure.patch(`/adminpay/${item?.employee_id}`,{
             employee_id:item?.employee_id,
             month:item?.month,
-            year:item?.year
+            year:item?.year,
+            Trans_id:paymentIntent?.id
         })
         console.log(data);
         toast.success('Pay Successful!')

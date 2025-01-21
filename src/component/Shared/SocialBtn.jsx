@@ -10,7 +10,7 @@ const SocialBtn = () => {
     const axiosPublic = useAxiousPublic()
   
  
-  const {handleRegister,mannageProfile,handleGoogleLogin,user }= useContext(AuthContext)
+  const {handleRegister,manageProfile,handleGoogleLogin,user }= useContext(AuthContext)
   
   const [error,setError] = useState()
   const navigate = useNavigate()

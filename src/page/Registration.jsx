@@ -16,7 +16,7 @@ const Registration = () => {
   const axiosPublic = useAxiousPublic()
   
  
-  const {handleRegister,mannageProfile,handleGoogleLogin,user }= useContext(AuthContext)
+  const { handleRegister, manageProfile,handleGoogleLogin,user }= useContext(AuthContext)
   
   const [error,setError] = useState("")
   const navigate=useNavigate()
@@ -68,11 +68,12 @@ const Registration = () => {
           const result = await handleRegister(email,password)
     
         
-          await mannageProfile(name,img_url)
+          await manageProfile(name,img_url)
           
          
           axiosPublic.post('/user',UserInfo)
           .then(res=>{
+            console.log(res.data)
             if(res.data.modifiedCount > 0 || res.data.insertedId ){
              
                Swal.fire({
