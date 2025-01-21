@@ -17,6 +17,7 @@ import HrRoute from "../private/HrRoute";
 import AdminRoute from "../private/AdminRoute";
 import DashBoardHome from "../component/Dashboard/DashBoardHome";
 import ContactUs from "../page/ContactUs";
+import Message from "../component/Dashboard/Admin/Message";
 
 export const router = createBrowserRouter([{
     
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([{
         path: 'payroll',
         element:<PrivateRoute><AdminRoute><Payroll></Payroll></AdminRoute></PrivateRoute>
      },
+     {
+      path: 'message',
+      element:<PrivateRoute><AdminRoute><Message></Message> </AdminRoute></PrivateRoute>
+   },
     
     ]
     

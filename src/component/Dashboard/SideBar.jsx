@@ -7,7 +7,7 @@ import { Dropdown } from "flowbite-react";
 import useAdmin from "../../hook/useAdmin";
 import useHr from "../../hook/useHr";
 import useEmployee from "../../hook/useEmployee";
-import { FaBarsProgress, FaPeopleGroup } from "react-icons/fa6";
+import { FaBarsProgress, FaMessage, FaPeopleGroup } from "react-icons/fa6";
 import { FcDataSheet } from "react-icons/fc";
 
 
@@ -30,6 +30,9 @@ const SideBar = () => {
     </NavLink>
     <NavLink to="payroll">
       <li className="mt-5"><a className="flex items-center gap-2"><FaPaypal></FaPaypal> Payroll</a></li>
+    </NavLink>
+    <NavLink to="message">
+      <li className="mt-5"><a className="flex items-center gap-2"><FaMessage></FaMessage> Message</a></li>
     </NavLink>
   </div>
 ) : null}

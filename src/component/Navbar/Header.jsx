@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { FaHome, FaPhone, FaRegistered, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
+import logo from "../../assets/resourcer-logo-inv.png"
 
 const Header = () => {
   const { user, handleLogout } = useContext(AuthContext);
@@ -35,7 +36,8 @@ const Header = () => {
     <Navbar fluid rounded className="bg-[#1E429F] text-white">
         <Navbar.Brand>
         <Navbar.Toggle />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+        <img src={logo} className="h-10" alt="" />
+      
       </Navbar.Brand>
       
      {

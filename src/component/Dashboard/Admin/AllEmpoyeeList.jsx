@@ -127,7 +127,7 @@ const AllEmpoyeeList = () => {
                     <Table.Cell>{item.name}</Table.Cell>
                     <Table.Cell>{item.designation}</Table.Cell>
                     <Table.Cell>
-                      <button className="ml-7 my-2" onClick={() => handleMakeHr(item)}>
+                      <button className="" onClick={() => handleMakeHr(item)}>
                         {item.role}
                       </button>
                     </Table.Cell>
