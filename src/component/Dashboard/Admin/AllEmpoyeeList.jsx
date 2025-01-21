@@ -63,7 +63,7 @@ const AllEmpoyeeList = () => {
     <div>
       <h1 className="text-center text-3xl font-bold mt-10 text-[#1E429F]">All Employee List</h1>
     <div>
-        <label className="inline-flex items-center cursor-pointer">
+        <label className="inline-flex items-center cursor-pointer mt-10">
           <input
             type="checkbox"
             value=""
@@ -78,7 +78,7 @@ const AllEmpoyeeList = () => {
      
       <div className="mt-10">
         {isCardView ? (
-        <div>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {myData?.map(item => (
               <div key={item._id} className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-500 dark:text-white">

@@ -22,7 +22,7 @@ export default function AdminPay({ item, refetch, isOpen, close, setIsOpen }) {
 
   return (
     <div>
-      <div className='mt-5'>
+      <div className='-mx-10'>
         {
           status === 'paid' ?
             <Button className="font-bold ml-7  text-red-500" disabled >
