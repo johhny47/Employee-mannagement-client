@@ -39,10 +39,10 @@ const WorkSheet = () => {
     const task = form.task.value;
     const hour = form.hour.value;
     const date = startDate;
-    const employeeName = user?.name;
+    const employeeName = user?.displayName;
     const employeeEmail = user?.email;
     const employeePhoto = user?.photoURL;
-    const taskInfo = { task, hour, date, employeeEmail,employeeName,employeePhoto };
+    const taskInfo = { task, hour, date,employeeName,employeeEmail,employeePhoto };
 
     try {
       const res = await  axiosSecure.post('/task', taskInfo);
