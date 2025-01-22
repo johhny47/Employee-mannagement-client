@@ -1,6 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import useAdmin from "../hook/useAdmin";
+import Banner from "../component/HomeComponent/Banner/Banner";
+
+
 
 
 
@@ -11,7 +14,7 @@ const Home = () => {
    
     return (
         <div>
-            <h1>home</h1>
+           <Banner></Banner>
            
         </div>
     );
