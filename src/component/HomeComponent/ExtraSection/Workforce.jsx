@@ -6,13 +6,13 @@ const Workforce = () => {
     return (
         <div className="md:flex justify-end min-w-full md:px-20">
             {/* text */}
-            <div className="md:w-1/2 ">
+            <div className="md:w-1/2 px-3">
             <div >
                <h1 class=" text-gray-800  font-semibold text-sm md:text-md">
                   TRANSFORMING WORKFORCE MANAGEMENT
                     </h1>
                   <hr class="tracking-widest border-t-2 border-purple-900 md:w-7/12 " />
-                 </div>
+            </div>
               <div>
                  <h1 className="font-bold text-md md:text-5xl text-gray-400 md:mt-5">
                  Connecting you to  success and <br /> unleashing the <br />  potential
@@ -26,7 +26,7 @@ const Workforce = () => {
              </div>
             </div>
             {/* img */}
-            <div className="w-1/2 border-2">
+            <div className="md:w-1/2 mt-5 border-2">
               <div className='h-1/2'>
                 <img src={img1} className='h-60 min-w-full'  alt="" />
               </div>

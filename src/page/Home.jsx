@@ -5,6 +5,7 @@ import Banner from "../component/HomeComponent/Banner/Banner";
 import Service from "../component/HomeComponent/Service/Service";
 import Testimonial from "../component/HomeComponent/Testimonial/Testimonial";
 import Workforce from "../component/HomeComponent/ExtraSection/Workforce";
+import Proccess from "../component/HomeComponent/ExtraSection/Proccess";
 
 
 
@@ -24,6 +25,7 @@ const Home = () => {
            <Testimonial></Testimonial>
            </div>
           <Workforce></Workforce>
+          <Proccess></Proccess>
            
         </div>
     );
