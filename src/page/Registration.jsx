@@ -8,7 +8,7 @@ import useAxiousPublic from "../hook/useAxiousPublic";
 import axios from "axios";
 import SocialBtn from "../component/Shared/SocialBtn";
 import Swal from "sweetalert2";
-
+import { Helmet} from 'react-helmet-async';
 
 
 
@@ -107,6 +107,10 @@ const Registration = () => {
 
     return (
         <div className="md:max-w-3xl mx-auto bg-[#C3DDFD]  mt-20 md:mt-10 p-5 rounded-lg">
+          <Helmet>
+        <title>Registration</title>
+      
+          </Helmet>
       <h1 className="mx-20 md:mx-60 text-[#8DA2FB]  font-bold text-3xl md:text-5xl">Registration</h1>
 <form onSubmit={handleSubmit} >
 <div className="md:flex justify-around mt-10 md:mt-14">

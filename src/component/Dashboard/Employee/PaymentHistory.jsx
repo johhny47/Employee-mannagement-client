@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import AuthContext from "../../../provider/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet} from 'react-helmet-async';
 
 const PaymentHistory = () => {
     const axiosSecure = useAxiosSecure();
@@ -12,7 +13,7 @@ const PaymentHistory = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 5;
 
-    const { data, isLoading, refetch } = useQuery({
+    const { data,refetch,isLoading,isError,error } = useQuery({
         queryKey: ['paymentHistory', email],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/paymenthistory/${email}`);
@@ -39,15 +40,29 @@ const PaymentHistory = () => {
     };
 
     const handlePrevPage = () => {
-        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1)); // 
+        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1)); 
     };
 
     const handleNextPage = () => {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(sortedData?.length / rowsPerPage))); 
     };
-
+    if (isLoading) {
+        return <div>Loading...</div>
+      }
+    
+      if (isError) {
+        return <div>Error: {error.message}</div>
+      }
+    
+      if (data?.length === 0) {
+        return <div>No employees found</div> 
+      }
     return (
         <div>
+            <Helmet>
+        <title>Payment-History</title>
+      
+          </Helmet>
             <h1 className="text-center text-3xl font-bold mt-10 text-[#1E429F]">Payment History</h1>
 
             {/* Table */}

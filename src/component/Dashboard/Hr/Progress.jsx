@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
-
+import { Helmet} from 'react-helmet-async';
 const Progress = () => {
   const axiosSecure = useAxiosSecure();
   const [selectedEmployee, setSelectedEmployee] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
 
-  const { data: myData, refetch } = useQuery({
+  const { data: myData, refetch,isLoading,isError,error } = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
       const { data } = await axiosSecure('/alltask');
@@ -36,8 +36,24 @@ const Progress = () => {
     return isEmployeeMatch && isMonthMatch;
   });
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>
+  }
+
+  if (myData?.length === 0) {
+    return <div>No progress found</div> 
+  }
+
   return (
     <div>
+      <Helmet>
+        <title>Progress</title>
+      
+          </Helmet>
       <h1 className="text-center text-3xl font-bold mt-10 text-[#1E429F]">Progress</h1>
       
       <div className="flex justify-between mt-10">
@@ -73,12 +89,12 @@ const Progress = () => {
           </Table.Head>
 
           <Table.Body className="divide-y">
-            {filteredData?.map(item => (
+            { filteredData?.map(item => (
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={item._id}>
-                <Table.Cell>{item.task}</Table.Cell>
-                <Table.Cell>{item.employeeName}</Table.Cell>
-                <Table.Cell>{item.hour}</Table.Cell>
-                <Table.Cell>{item.date?.split('T')[0]}</Table.Cell>
+                <Table.Cell>{item?.task}</Table.Cell>
+                <Table.Cell>{item?.employeeName}</Table.Cell>
+                <Table.Cell>{item?.hour}</Table.Cell>
+                <Table.Cell>{item?.date?.split('T')[0]}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>

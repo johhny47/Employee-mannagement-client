@@ -6,7 +6,7 @@ import Service from "../component/HomeComponent/Service/Service";
 import Testimonial from "../component/HomeComponent/Testimonial/Testimonial";
 import Workforce from "../component/HomeComponent/ExtraSection/Workforce";
 import Proccess from "../component/HomeComponent/ExtraSection/Proccess";
-
+import { Helmet} from 'react-helmet-async';
 
 
 
@@ -18,6 +18,10 @@ const Home = () => {
    
     return (
         <div>
+             <Helmet>
+        <title>Home</title>
+      
+          </Helmet>
            <Banner></Banner>
            <Service></Service>
            <div className="my-14 md:px-20">

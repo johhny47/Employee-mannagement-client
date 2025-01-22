@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
 import AuthContext from "../../provider/AuthContext";
-
+import { Helmet} from 'react-helmet-async';
 const DashBoardHome = () => {
    const {user,handleLogout} =useContext(AuthContext)
 
     return (
         <div className="flex h-screen pb-10">
-    
+      <Helmet>
+        <title>Dashboard</title>
+      
+          </Helmet>
       <div className="flex-1 p-8">
          
           <div className="flex justify-between mb-8">

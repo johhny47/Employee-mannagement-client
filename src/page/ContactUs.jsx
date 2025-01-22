@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import useAxiousPublic from "../hook/useAxiousPublic";
 import Swal from "sweetalert2";
+import { Helmet} from 'react-helmet-async';
 
 const ContactUs = () => {
 
@@ -51,6 +52,11 @@ const ContactUs = () => {
   return (
 
     <div className="md:flex justify-around items-center p-8">
+       <Helmet>
+        <title>Contact_us</title>
+      
+          </Helmet>
+
      <div>
      <h1 className="text-3xl font-bold text-center mb-6">Contact Us</h1>
 

@@ -22,6 +22,7 @@ export default function AdminPay({ item, refetch, isOpen, close, setIsOpen }) {
 
   return (
     <div>
+       
       <div className='-mx-10'>
         {
           status === 'paid' ?

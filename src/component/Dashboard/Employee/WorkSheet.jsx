@@ -14,7 +14,7 @@ import Swal from "sweetalert2";
 import { Button } from "@headlessui/react";
 import MyModal from "../../Shared/MyModal";
 import { FaEdit, FaPen, FaTrash } from "react-icons/fa";
-
+import { Helmet} from 'react-helmet-async';
 const WorkSheet = () => {
     let [isOpen, setIsOpen] = useState(false) 
   const { user } = useContext(AuthContext);
@@ -97,6 +97,10 @@ const WorkSheet = () => {
   const close = () => setIsOpen(false);
   return (
     <div>
+      <Helmet>
+        <title>worksheet</title>
+      
+          </Helmet>
       <h1 className=" text-center text-3xl font-bold mt-10 text-[#1E429F]">Work Sheet</h1>
 
       {/* Form */}
@@ -141,9 +145,9 @@ const WorkSheet = () => {
             {data?.map(item => (
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={item._id}>
           
-                <Table.Cell>{item.task}</Table.Cell>
-                <Table.Cell>{item.hour}</Table.Cell>
-                <Table.Cell>{item.date.split('T')[0]}</Table.Cell>
+                <Table.Cell>{item?.task}</Table.Cell>
+                <Table.Cell>{item?.hour}</Table.Cell>
+                <Table.Cell>{item?.date.split('T')[0]}</Table.Cell>
                 <Table.Cell><button onClick={() => handleDelete(item)}><FaTrash className="text-red-500"></FaTrash></button></Table.Cell>
                 <Table.Cell>
                 <button onClick={() => setIsOpen(true)} >

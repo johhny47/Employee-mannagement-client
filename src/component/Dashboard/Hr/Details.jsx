@@ -3,13 +3,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Bar, BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend,LabelList,Cell } from "recharts";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
-
+import { Helmet} from 'react-helmet-async';
 const Details = () => {
     const  axiosSecure = useAxiosSecure();
     const params = useParams();
     console.log(params.id);
 
-    const { data, refetch } = useQuery({
+    const { data, refetch,isLoading,isError,error } = useQuery({
         queryKey: ['details'],
         queryFn: async () => {
             const { data } = await axiosSecure(`/details/${params?.id}`);
@@ -35,8 +35,24 @@ const Details = () => {
    
     const sortedChartData = chartData.sort((a, b) => a.date - b.date);
 
+    if (isLoading) {
+        return <div>Loading...</div>
+      }
+    
+      if (isError) {
+        return <div>Error: {error.message}</div>
+      }
+    
+      if (data?.length === 0) {
+        return <div>No details found</div> 
+      }
+
     return (
         <div className="max-w-6xl mx-auto mt-14">
+            <Helmet>
+        <title>Details</title>
+      
+          </Helmet>
             <h1 className="text-center text-3xl font-bold">Employee Details</h1>
             {
                 data && data.length > 0 ? (

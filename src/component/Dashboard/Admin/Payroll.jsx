@@ -6,12 +6,12 @@ import { FaCheck, FaCross, FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import AdminPay from "./AdminPay";
-
+import { Helmet} from 'react-helmet-async';
 
 const Payroll = () => {
   const axiosSecure = useAxiosSecure();
   let [isOpen, setIsOpen] = useState(false)
-  const { data:myData, refetch } = useQuery({
+  const { data:myData, refetch ,isLoading,isError,error} = useQuery({
     queryKey: ['employees'],
     queryFn: async () => {
       const { data } = await axiosSecure.get('/payroll');
@@ -20,8 +20,25 @@ const Payroll = () => {
   });
 
   const close = () => setIsOpen(false);
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>
+  }
+
+  if (myData?.length === 0) {
+    return <div>No Payroll found</div> 
+  }
+
   return (
     <div>
+      <Helmet>
+        <title>PAYROLL</title>
+      
+          </Helmet>
       <h1 className=" text-center text-3xl font-bold mt-10 text-[#1E429F]">Payroll</h1>
     
       <div className="overflow-x-auto mt-10">
