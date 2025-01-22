@@ -4,6 +4,7 @@ import useAdmin from "../hook/useAdmin";
 import Banner from "../component/HomeComponent/Banner/Banner";
 import Service from "../component/HomeComponent/Service/Service";
 import Testimonial from "../component/HomeComponent/Testimonial/Testimonial";
+import Workforce from "../component/HomeComponent/ExtraSection/Workforce";
 
 
 
@@ -18,11 +19,11 @@ const Home = () => {
         <div>
            <Banner></Banner>
            <Service></Service>
-           <div className="my-14">
-            <h1 className="text-center font bold text-2xl md:text-3xl lg:text-4xl  my-14 px-10">Testimonial</h1>
+           <div className="my-14 md:px-20">
+            <h1 className="text-center font bold text-2xl md:text-3xl lg:text-4xl  my-14 md:px-10">Testimonial</h1>
            <Testimonial></Testimonial>
            </div>
-          
+          <Workforce></Workforce>
            
         </div>
     );
