@@ -18,11 +18,13 @@ import AdminRoute from "../private/AdminRoute";
 import DashBoardHome from "../component/Dashboard/DashBoardHome";
 import ContactUs from "../page/ContactUs";
 import Message from "../component/Dashboard/Admin/Message";
+import ErrorPage from "../page/ErrorPage";
 
 export const router = createBrowserRouter([{
     
         path: "/",
         element:<MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
              path:'/',
