@@ -9,8 +9,9 @@ This is a web application designed to manage employee tasks, payments, and admin
 #### Admin password: @Aa123456
 
 ## 🔗 Links
-Live site url: https://assignment-12-576c4.web.app
-Back-end Repo Link: https://github.com/johhny47/Employee-mannagement-Server
+  Live site url: https://assignment-12-576c4.web.app
+  
+  Back-end Repo Link: https://github.com/johhny47/Employee-mannagement-Server
 ## 🚀 Technologies used for front-end
 
 <p align="center">
