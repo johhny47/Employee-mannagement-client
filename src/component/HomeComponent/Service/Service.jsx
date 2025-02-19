@@ -50,7 +50,7 @@ const cards = [
 const Service = () => {
     return (
         <div>
-            <h1 className="text-center font bold text-2xl md:text-3xl lg:text-4xl  my-14 ">Our Service</h1>
+            <h1 className="text-center font bold text-2xl md:text-3xl lg:text-4xl  py-14 ">Our Service</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-5">
             {cards.map((cart) => 

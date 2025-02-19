@@ -51,7 +51,7 @@ const ContactUs = () => {
 
   return (
 
-    <div className="md:flex justify-around items-center p-8">
+    <div className="md:flex justify-around items-center p-8 mt-20">
        <Helmet>
         <title>Contact_us</title>
       

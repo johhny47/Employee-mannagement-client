@@ -5,7 +5,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import { FaHome, FaPhone, FaRegistered, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import logo from "../../assets/resourcer-logo-inv.png"
-
+import "./Header.css";
 const Header = () => {
   const { user, handleLogout } = useContext(AuthContext);
  
@@ -44,7 +44,7 @@ const Header = () => {
       </Navbar.Brand>
       
      {
-      user ?  <div className="flex md:order-2 gap-4 items-center">   <ul className="hidden md:block"><NavLink to="/"><li ><a className="flex items-center gap-2" onClick={handleLogout} ><h1>Logout</h1> <FaSignOutAlt ></FaSignOutAlt></a></li>  </NavLink></ul>
+      user ?  <div className="flex md:order-2 gap-4 items-center">   <ul className="hidden md:block"><Link to="/"><li ><a className="flex items-center gap-2" onClick={handleLogout} ><h1>Logout</h1> <FaSignOutAlt ></FaSignOutAlt></a></li>  </Link></ul>
       <Avatar alt="User settings"  img={user?.photoURL} rounded /></div> : <div></div>
      
       

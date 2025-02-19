@@ -2,7 +2,7 @@
 
 const Proccess = () => {
     return (
-        <div  className="py-20 px-5">
+        <div  className="py-10 px-5">
              <div>
                <h1 class="tracking-widest text-gray-800 text-center uppercase  font-semibold text-sm md:text-md">
                delivering the highest standards
