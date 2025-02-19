@@ -1,6 +1,7 @@
 import Card from "./Card"
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
+
 const cards = [
     {
         id: 1,
@@ -22,9 +23,9 @@ const cards = [
         id: 5,
         url: "https://i.ibb.co.com/3hdPKBF/A-good-leader-must-be-capable-of-strategic-planning-for-operational-processes.jpg",
     },
-   
 ];
-const Testimonial  = () => {
+
+const Testimonial = () => {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -33,10 +34,12 @@ const Testimonial  = () => {
     const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
     return (
-        <section ref={targetRef} className="relative h-[300vh] bg-red-50 rounded-2xl">
-
-            <div className="sticky top-0 flex h-screen items-center  overflow-hidden">
-                <motion.div style={{ x }} className="flex gap-4">
+        <section ref={targetRef} className="relative">
+            <div className="sticky top-0 flex  items-center overflow-hidden w-full">
+                <motion.div
+                    style={{ x }}
+                    className="flex gap-4 "
+                >
                     {cards.map((card) => {
                         return <Card card={card} key={card.id} />;
                     })}
@@ -46,4 +49,4 @@ const Testimonial  = () => {
     );
 };
 
-export default Testimonial ;
+export default Testimonial;

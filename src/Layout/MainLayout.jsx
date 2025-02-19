@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import SweetAlert2 from "react-sweetalert2";
 import Header from "../component/Navbar/Header";
 import Footer from "../component/Footer/Footer";
+import FeaturesSection from "../component/HomeComponent/ExtraSection/FeaturesSection";
 
 
 const MainLayout = () => {
@@ -12,6 +13,7 @@ const MainLayout = () => {
             <Toaster/>
             <SweetAlert2/>
             <Header></Header>
+           
             <div className="min-h-[calc(100vh-273px)] w-full mx-auto">
             <Outlet></Outlet>
             </div>

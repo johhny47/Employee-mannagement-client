@@ -4,9 +4,9 @@ import img3 from '../../../assets/workforce3.jpg'
 
 const Workforce = () => {
     return (
-        <div className="md:flex justify-end min-w-full md:px-20">
+        <div className="md:flex justify-end min-w-full md:px-5">
             {/* text */}
-            <div className="md:w-1/2 px-3">
+            <div className="md:w-1/2 ">
             <div >
                <h1 class=" text-gray-800  font-semibold text-sm md:text-md">
                   TRANSFORMING WORKFORCE MANAGEMENT
@@ -28,14 +28,14 @@ const Workforce = () => {
             {/* img */}
             <div className="md:w-1/2 mt-5 border-2">
               <div className='h-1/2'>
-                <img src={img1} className='h-60 min-w-full'  alt="" />
+                <img src={img1} className='h-60 min-w-full p-2'  alt="" />
               </div>
               <div className='flex '>
                 <div>
-                <img src={img2} className='h-60 w-72' alt="" />  
+                <img src={img2} className='h-60 w-72 p-2' alt="" />  
                 </div>
                 <div>
-                <img src={img3} className='h-60 w-72' alt="" />
+                <img src={img3} className='h-60 w-80 p-2 ml-2' alt="" />
                 </div>
               </div>
             </div>

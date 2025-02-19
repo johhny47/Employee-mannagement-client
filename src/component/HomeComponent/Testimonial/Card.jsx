@@ -2,7 +2,7 @@
 
 const Card = ({ card }) => {
     return (
-      <div className="group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200 rounded-lg shadow-lg"
+      <div className="group relative h-[450px] w-[450px] overflow-hidden  shadow-lg"
         key={card.id}
       >
        
