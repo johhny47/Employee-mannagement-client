@@ -8,6 +8,7 @@ import Workforce from "../component/HomeComponent/ExtraSection/Workforce";
 import Proccess from "../component/HomeComponent/ExtraSection/Proccess";
 import { Helmet} from 'react-helmet-async';
 import FeaturesSection from "../component/HomeComponent/ExtraSection/FeaturesSection";
+import HowItWorksSection from "../component/HomeComponent/ExtraSection/HowItWorksSection";
 
 
 
@@ -32,6 +33,7 @@ const Home = () => {
            </div>
           <Workforce></Workforce>
           <FeaturesSection></FeaturesSection>
+          <HowItWorksSection></HowItWorksSection>
           <Proccess></Proccess>
            
         </div>
