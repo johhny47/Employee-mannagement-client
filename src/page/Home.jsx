@@ -9,6 +9,7 @@ import Proccess from "../component/HomeComponent/ExtraSection/Proccess";
 import { Helmet} from 'react-helmet-async';
 import FeaturesSection from "../component/HomeComponent/ExtraSection/FeaturesSection";
 import HowItWorksSection from "../component/HomeComponent/ExtraSection/HowItWorksSection";
+import FAQSection from "../component/HomeComponent/ExtraSection/FAQSection";
 
 
 
@@ -35,6 +36,8 @@ const Home = () => {
           <FeaturesSection></FeaturesSection>
           <HowItWorksSection></HowItWorksSection>
           <Proccess></Proccess>
+          <FAQSection></FAQSection>
+         
            
         </div>
     );
